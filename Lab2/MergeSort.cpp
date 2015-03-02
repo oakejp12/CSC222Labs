@@ -1,4 +1,7 @@
 #include "MergeSort.h"
+#include <iostream>
+#include <string.h>
+#include <stdio.h>
 
 
 void MergeSort::sort(string* data, int n) {
