@@ -15,7 +15,12 @@
 class MergeSort : public SortAlgorithm {
 
 public:
-	void sort(string*, int);
+	void sort(string*, int); // Implementation of sort function
+private:
+	void mergesort(string*, int, int);
+	void merge(string*, int, int, int);
+	void swap(string&, string&); 
+
 };
 
 
