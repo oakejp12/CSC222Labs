@@ -19,7 +19,7 @@ Data::Data(string filename) {
     std = 1.0/8;	// Default standard deviation for Gaussian function
 
     // Read text data from filename, one line at the time
-    ifstream infile(filename);
+    ifstream infile(filename.c_str());
     string line;    
     if (!infile.is_open()) {
         cout << "Error opening file " << filename << endl;
@@ -75,7 +75,7 @@ void Data::shuffle() {
 // writeToFile(string filename): write array to given filename
 // ------------------------------------------------------------------------
 void Data::writeToFile(string filename) {
-    ofstream outfile(filename); 
+    ofstream outfile(filename.c_str()); 
 
     if ( !outfile.is_open() ) {
                cout << "Error opening file " << filename << endl;

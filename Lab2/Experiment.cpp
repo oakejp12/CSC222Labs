@@ -108,7 +108,7 @@ void Experiment::run(int low, int high, int n, int maxTrials) {
 // ------------------------------------------------------------------------
 void Experiment::save(string filename) {
     ofstream outfile;
-    outfile.open(filename);
+    outfile.open(filename.c_str());
     if ( !outfile.is_open() ) {
         cout << "Error opening file " << filename << endl;
         assert(0);        
