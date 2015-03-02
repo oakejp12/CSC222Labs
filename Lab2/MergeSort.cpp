@@ -19,6 +19,9 @@ void MergeSort::merge(string* data, int low, int middle, int high) {
 	// Create the helper array
 	string* helper = new string[(high-low)+1];
 
+	for (int i = low; i <= high; i++)
+		helper[i] = data[i];
+
 	int helperLeft = low;
 	int helperRight = middle + 1;
 	int current = low;
@@ -27,7 +30,7 @@ void MergeSort::merge(string* data, int low, int middle, int high) {
 	 * half, copying back the smaller element from the two halves
 	 * into the original array. */
 	 while (helperLeft	<= middle && helperRight <= high) {
-	 	if (data[helperLeft] <= data[helperRight]){
+	 	if (helper[helperLeft] <= helper[helperRight]){
 	 		data[current] = helper[helperLeft];
 	 		helperLeft++
 	 	} else { // If the right element is smaller the left element
@@ -45,11 +48,3 @@ void MergeSort::merge(string* data, int low, int middle, int high) {
 
 }
 
-
-
-void MergeSort::swap(string& s1, string& s2) {
-    string tmp;
-    tmp = s1;
-    s1 = s2;
-    s2 = tmp;
-}

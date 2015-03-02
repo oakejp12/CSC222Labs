@@ -19,8 +19,6 @@ public:
 private:
 	void mergesort(string*, int, int);
 	void merge(string*, int, int, int);
-	void swap(string&, string&); 
-
 };
 
 
