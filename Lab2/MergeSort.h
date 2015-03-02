@@ -11,6 +11,7 @@
 
 #include "SortAlgorithm.h"
 
+
 // MergeSort implements the SortAlgorithm interface
 class MergeSort : public SortAlgorithm {
 
@@ -19,7 +20,9 @@ public:
 private:
 	void mergesort(string*, int, int);
 	void merge(string*, int, int, int);
+
+	void swap(string&, string&);
+
 };
 
-
-#endif MERGESORT_H
+#endif

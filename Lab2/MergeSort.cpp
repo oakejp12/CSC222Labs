@@ -18,32 +18,49 @@ void MergeSort::merge(string* data, int low, int middle, int high) {
 	// Create the helper array
 	string* helper = new string[(high-low)+1];
 
-	for (int i = low; i <= high; i++)
-		helper[i] = data[i];
-
 	int helperLeft = low;
 	int helperRight = middle + 1;
-	int current = low;
+	int current = 0;
+
+	/* Take care of case of two-element array */
+	if ((low - high) == 1) {
+		if (data[high] < data[low]) {
+			swap(data[high], data[low]);
+		}
+		return;
+	}
 
 	/* Iterate through helper array. Compare the left and right
-	 * half, copying back the smaller element from the two halves
+	 * half, copying back the larger element from the two halves
 	 * into the original array. */
 	 while (helperLeft	<= middle && helperRight <= high) {
-	 	if (helper[helperLeft] <= helper[helperRight]){
-	 		data[current] = helper[helperLeft];
-	 		helperLeft++;
-	 	} else { // If the right element is smaller the left element
-	 		data[current] = helper[helperRight];
+	 	if (data[helperRight].compare(data[helperLeft]) < 0){
+	 		helper[current] = data[helperRight];
 	 		helperRight++;
+	 	} else { // If the left element is smaller the right element
+	 		helper[current] = data[helperLeft];
+	 		helperLeft++;
 	 	}
 	 	current++;
 	 }
 
-	/* Copy the rest of the left side into the target array */
-	int remaining = middle - helperLeft;
-	for (int i = 0; i <= remaining; i++) {
-		data[current + i] = helper[helperLeft + i];
-	}
+	/* Copy the rest of the right side into the target array */
+	 for (; current <= high && helperLeft <= middle; current++,helperLeft++)
+	 	helper[current] = data[helperLeft];
+
+	 for (; current <= high && helperRight <= high; current++, helperRight++)
+	 	helper[current] = data[helperRight];
+
+	 /* Shift elements into data[] */
+	 for (current = 0, helperLeft = low; current < ((high - low) + 1) && low <= high; current++,helperLeft++)
+	 	swap(data[helperLeft], helper[current]);
+	 
 
 }
 
+void MergeSort::swap(string& s1, string& s2) {
+    string tmp;
+    tmp = s1;
+    s1 = s2;
+    s2 = tmp;
+}
