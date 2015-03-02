@@ -1,9 +1,4 @@
 #include "SelectionSort.h"
-#include <iostream>
-#include <string.h>
-#include <stdio.h>
-
-
 
 void SelectionSort::sort(string* data, int n) {
 
@@ -12,7 +7,7 @@ void SelectionSort::sort(string* data, int n) {
 	/* Advance position through the entire array */
 	for (j = 0; j < n-1; j++) {
 
-		/* Assume that min the first element */
+		/* Assume that min is the first element */
 		min = j;
 
 		/* Test against elements after j to find the smallest */

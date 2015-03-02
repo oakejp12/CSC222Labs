@@ -15,10 +15,10 @@ class QuickSort : public SortAlgorithm {
 public:
     void sort(string*, int);	// implementation of sort function
 private:
-	int partition(string *, int, int);
 	void quickSort(string*, int, int);
+	int partition(string*, int, int);
     void swap(string&, string&); // it's own private function, not part of
 				 // the interface
 };
 
-#endif QUICKSORT_H	
+#endif

@@ -1,14 +1,11 @@
 #include "QuickSort.h"
-#include <iostream>
-#include <string.h>
-#include <stdio.h>
 
 
 void QuickSort::sort(string* data, int n) {
 	quickSort(data, 0, n-1);
 }
 
-void quickSort(string* data, int left, int right) {
+void QuickSort::quickSort(string* data, int left, int right) {
 	int index = partition(data, left, right);
 
 	if (left < index - 1) 
@@ -41,7 +38,7 @@ int QuickSort::partition(string* data, int left, int right) {
 }
 
 
-void SelectionSort::swap(string& s1, string& s2) {
+void QuickSort::swap(string& s1, string& s2) {
     string tmp;
     tmp = s1;
     s1 = s2;
