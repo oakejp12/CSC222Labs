@@ -1,2 +1,2 @@
-# CSC222Labs
-My implementation of the labs for Data Structures and Algorithms 2
+# Sorting Algorithms and Complexity
+
