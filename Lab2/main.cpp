@@ -10,7 +10,7 @@
 #include "Data.h"
 #include "Experiment.h"
 #include "SelectionSort.h"
-//#include "MergeSort.h"
+#include "MergeSort.h"
 #include "QuickSort.h"
 
 using namespace std;
@@ -29,7 +29,7 @@ int main() {
 
     // Add the algortithms to the experiment
     experiment.addAlgorithm(new SelectionSort());
-    //experiment.addAlgorithm(new MergeSort());
+    experiment.addAlgorithm(new MergeSort());
     experiment.addAlgorithm(new QuickSort());
     
     // Run 98 timing experiments w/ list sizes between

@@ -1,11 +1,11 @@
 .SUFFIXES: .cpp
 
 CC = g++
-CFLAGS = -g -I/usr/local/include -DPRINT
+CFLAGS = -std=c++0x -g -I/usr/local/include -DPRINT
 LDIR =
 LIBS =
 
-OBJ = Experiment.o Data.o SelectionSort.o main.o
+OBJ = Experiment.o Data.o SelectionSort.o MergeSort.o QuickSort.o main.o
 
 test: $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $(OBJ) $(LDIR) $(LIBS)
