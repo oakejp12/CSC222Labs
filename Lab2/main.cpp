@@ -11,7 +11,7 @@
 #include "Experiment.h"
 #include "SelectionSort.h"
 //#include "MergeSort.h"
-//#include "QuickSort.h"
+#include "QuickSort.h"
 
 using namespace std;
 
@@ -30,8 +30,11 @@ int main() {
     // Add the algortithms to the experiment
     experiment.addAlgorithm(new SelectionSort());
     //experiment.addAlgorithm(new MergeSort());
-    //experiment.addAlgorithm(new QuickSort());
+    experiment.addAlgorithm(new QuickSort());
     
+    // Run 98 timing experiments w/ list sizes between
+    // 2 and 100, 2048 is maximum number of trials to do
+    // for each problem size
     experiment.run(4, 5, 2, 1);
     experiment.save("Results.txt");
 }
