@@ -22,10 +22,10 @@ int QuickSort::partition(string* data, int left, int right) {
 
 	while (left <= right) {
 		// Find element on the left that should be on the right
-		while(data[left] < pivot) left++;
+		while(data[left].compare(pivot) < 0) left++;
 
 		// Find element on the right that should be on the left
-		while(data[right] > pivot) right--;
+		while(data[right].compare(pivot) > 0) right--;
 
 		if (left <= right) {
 			swap(data[left], data[right]);

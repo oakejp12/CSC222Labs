@@ -14,12 +14,12 @@ void SelectionSort::sort(string* data, int n) {
 		for (i = j + 1; i < n; i++) {
 
 			/* If less, then element is the new minimum */
-			if (data[i] < data[min])
+			if (data[i].compare(data[min]) < 0)
 				min = i;
 		}
 
 		/* Swap the new smallest with current element */
-		if ( min != j) {
+		if (min != j) {
 			swap(data[j], data[min]);
 		}
 	}   
