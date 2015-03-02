@@ -14,14 +14,14 @@
 // ------------------------------------------------------------------------
 Experiment::Experiment(Data* d) {
     assert( d != 0 );
-    data = d;		// Save Data object
+    data = d;       // Save Data object
 }
 
 // addAlgorithm(alg): Add SortAlgorithm alg to the experiment
 // ------------------------------------------------------------------------
 void Experiment::addAlgorithm(SortAlgorithm* alg) {
     assert( alg != 0 );
-    algorithm.push_back(alg); 	// Save ptr into vector
+    algorithm.push_back(alg);   // Save ptr into vector
 }
 
 // get_timestamp(): returns current time stamp in seconds
@@ -48,10 +48,10 @@ timestamp_t Experiment::get_timestamp () {
 void Experiment::run(int low, int high, int n, int maxTrials) {
     assert( n > 1 );  
     int interval = (high - low) / (n-1);// fixed step size between problems
-    int size = low;			// initial problem size
-    timestamp_t startTime;		// start time
-    timestamp_t endTime;		// end time
-    int trials = maxTrials;		// number of trials for initial size
+    int size = low;         // initial problem size
+    timestamp_t startTime;      // start time
+    timestamp_t endTime;        // end time
+    int trials = maxTrials;     // number of trials for initial size
     
     cout << "Running a timing experiment with parameters:" << endl;
     cout << "==========================================================\n";
@@ -73,30 +73,30 @@ void Experiment::run(int low, int high, int n, int maxTrials) {
     // For each algorithm in this experiment...
     for (int k = 0; k < algorithm.size(); k++) {
         cout << "Running algorithm " << k+1 << " out of " << algorithm.size() 
-		<< "...\n";
+        << "...\n";
         size = low;   // Reset the initial problem size
         // For each problem size...
         for (int i = 0; i < n; i++) {
-	    printf("\tproblem size: %6d  trials: %4d", size, trials);
+        printf("\tproblem size: %6d  trials: %4d", size, trials);
             // refresh the data to its original unsorted order
             data->refresh();
             
             // Time the sorting algorithm "trial" times and then calculate
             // the average. 
-   	    trials = 1 + (int)(maxTrials * data->reduceFactor(size));
-            startTime = get_timestamp();	  // start the timer
+        trials = 1 + (int)(maxTrials * data->reduceFactor(size));
+            startTime = get_timestamp();      // start the timer
             for (int j = 0; j < trials; j++) {
                 (algorithm[k])->sort(&(data->array[j*size]), size);
 #ifdef PRINT
                 data->print(j*size, size);
 #endif
             }
-            endTime = get_timestamp();	  // stop the timer
+            endTime = get_timestamp();    // stop the timer
             // Average number of elapsed seconds over the trials
             timings[k][i] = (endTime - startTime) / 1000000.0L / trials;
-            probSize[i] = size;		  // save the problem size
-            size += interval;		  // problem size for next iteration
-	    printf(" avg. time (s): %4.8f\n", timings[k][i]);
+            probSize[i] = size;       // save the problem size
+            size += interval;         // problem size for next iteration
+        printf(" avg. time (s): %4.8f\n", timings[k][i]);
         }
     }
     

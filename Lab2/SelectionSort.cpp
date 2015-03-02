@@ -1,4 +1,8 @@
 #include "SelectionSort.h"
+#include <iostream>
+#include <string.h>
+#include <stdio.h>
+
 
 
 void SelectionSort::sort(string* data, int n) {
