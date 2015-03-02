@@ -1,8 +1,4 @@
 #include "MergeSort.h"
-#include <iostream>
-#include <string.h>
-#include <stdio.h>
-
 
 void MergeSort::sort(string* data, int n) {
 	mergesort(data, 0, n-1);
@@ -35,12 +31,12 @@ void MergeSort::merge(string* data, int low, int middle, int high) {
 	 while (helperLeft	<= middle && helperRight <= high) {
 	 	if (helper[helperLeft] <= helper[helperRight]){
 	 		data[current] = helper[helperLeft];
-	 		helperLeft++
+	 		helperLeft++;
 	 	} else { // If the right element is smaller the left element
 	 		data[current] = helper[helperRight];
 	 		helperRight++;
 	 	}
-	 	current++
+	 	current++;
 	 }
 
 	/* Copy the rest of the left side into the target array */
