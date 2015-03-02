@@ -21,9 +21,7 @@ void SelectionSort::sort(string* data, int n) {
 
 		/* Swap the new smallest with current element */
 		if ( min != j) {
-			int temp = data[j];
-			data[j] = data[min];
-			data[min] = temp;
+			swap(data[j], data[min]);
 		}
 	}   
 }
