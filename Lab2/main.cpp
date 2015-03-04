@@ -35,7 +35,7 @@ int main() {
     // Run 98 timing experiments w/ list sizes between
     // 2 and 100, 2048 is maximum number of trials to do
     // for each problem size
-    experiment.run(4, 50, 46, 2);
+    experiment.run(59, 60, 10, 100);
     experiment.save("Results.txt");
 }
 
