@@ -1,7 +1,7 @@
 .SUFFIXES: .cpp
 
 CC = g++
-CFLAGS = -std=c++0x -g -I/usr/local/include -DPRINT
+CFLAGS = -std=c++0x -g -I/usr/local/include #-DPRINT
 LDIR =
 LIBS =
 
