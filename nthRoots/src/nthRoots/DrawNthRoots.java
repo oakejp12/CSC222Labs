@@ -11,75 +11,47 @@
 
 package nthRoots;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Scanner;
 
 import org.apache.commons.math3.complex.Complex;
-import org.apache.commons.math3.exception.NotPositiveException;
-import org.apache.commons.math3.exception.util.LocalizedFormats;
-import org.apache.commons.math3.util.FastMath;
 
 import nthRoots.StdDraw;
 
 public class DrawNthRoots {
 		
 	public static void main(String[] args){
-		System.out.println("Saaaan!");
 		
-		int maxRows = 100, maxColumns = 2;
-		int i = 0, j = 0;
-						
-		/*
-		for (; i < maxRows ; i++ ) {
-			
-			// Reinitialize columns to 0;
-			j = 0;
-			
-			for (; j < maxColumns; j++) {
-				System.out.print( aryNumbers[i][j] + " ");
+		// Draw the nth roots of unity
+		drawNthRoots();
+		
+		
+		return;
+	}
+	
+	/* Method to output the Nth roots given N > 0 */
+	public static void drawNthRoots() {
+		
+		// Draw the Nth roots of unity for N > 0 
+		// Here, N is set to 100 to give a good picture of the unit circle
+		int N = 500;
+		
+		StdDraw.setScale(-1.0, 1.0);
+		
+		if (N <= 0) {
+			System.out.println("Cannot compute Nth root of negative N");
+		} else {
+			for (int i = 0; i < N; i++ ) {
+				double x = Math.cos(2.0 * Math.PI * i / N);
+				double y = Math.sin(2.0 * Math.PI * i / N);
+				
+				// Create a new complex number based on the real and imaginary parts
+				Complex t = new Complex(x,y);
+					
+				// Plot the real and imaginary coordinates
+				StdDraw.point(x,y);
+				
+				System.out.println(t);	
 			}
-			
-			System.out.println("");
 		}
-		*/
-		
 	}
-	
-	/**
-	 *  Computes the nth roots of this complex number 
-	 *  Stores numbers in a ArrayList
-	 */
-	public List<Complex> nthRoot(int n) throws NotPositiveException {
-		
-		if (n <= 0 ) {
-			throw new NotPositiveException(LocalizedFormats.CANNOT_COMPUTE_NTH_ROOT_FOR_NEGATIVE_N,n);
-		}
-		
-		// Store complex numbers in a List
-		final List<Complex> result = new ArrayList<Complex>();
-
-		
-		final double nthPhi = ((Complex) result).getArgument() / n;
-		final double slice = 2 * FastMath.PI / n;
-		final double nthRootOfAbs = FastMath.pow(((Complex) result).abs(), 1.0 / n);
-		double innerPart = nthPhi;
-		
-		for (int i = 0; i < n; i++) {
-			final double realPart = nthRootOfAbs * FastMath.cos(innerPart);
-			final double imaginaryPart = nthRootOfAbs * FastMath.sin(innerPart);
-			result.add(createComplex(realPart, imaginaryPart));
-			innerPart += slice;
-		}
-		
-		
-		return result;
-	}
-	
-	/* Simple helper method to create a Complex number */
-	public Complex createComplex(double realPart, double imaginaryPart){
-		return new Complex(realPart,imaginaryPart);
-	}
-	
-
-
 }
